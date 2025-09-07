@@ -24,5 +24,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: List repo files
+        run: ls-R  
+      
       - name: Run ETL script
         run: python etl.py
