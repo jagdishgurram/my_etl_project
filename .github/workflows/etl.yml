@@ -6,8 +6,8 @@ on:
       - main   # Trigger workflow when pushing to main
   workflow_dispatch:  # Allow manual trigger
 
-  schedule:            # Daily schedule at 2 AM UTC
-   - cron: "0 2 * * *"
+  #schedule:            # Daily schedule at 2 AM UTC
+  #- cron: "0 2 * * *"
 
 jobs:
   build-and-test:
