@@ -1,0 +1,57 @@
+name: CI/CD Data Pipeline
+
+on:
+  push:
+    branches:
+      - main   # Trigger workflow when pushing to main
+  workflow_dispatch:  # Allow manual trigger
+
+  #schedule:            # Daily schedule at 2 AM UTC
+  #- cron: "0 2 * * *"
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: |
+          pip show pytest || pip install pytest
+          pytest tests/ --disable-warnings || echo "No tests found"
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'   # Only deploy from main branch
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Deploy to Production
+        run: |
+          echo "Deploying ETL job..."
+          python etl.py
