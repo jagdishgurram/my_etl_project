@@ -1,4 +1,3 @@
-# etl.py
 import pandas as pd
 
 def run_etl():
@@ -11,10 +10,10 @@ def run_etl():
 
     # Transform
     df["Age_in_5_years"] = df["Age"] + 5
-
-    # Load (just print for now)
-    print("Final DataFrame:")
-    print(df)
+    
+    return df
 
 if __name__ == "__main__":
-    run_etl()
+    df = run_etl()
+    print("Final DataFrame:")
+    print(df)

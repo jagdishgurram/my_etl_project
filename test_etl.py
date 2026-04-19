@@ -1,6 +1,6 @@
-import pandas as pd
 import pytest
 from etl import run_etl
+import etl
 
 @pytest.fixture
 def etl_df():
