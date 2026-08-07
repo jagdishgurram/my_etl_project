@@ -8,7 +8,7 @@ def etl_df():
 
 def test_data_not_empty(etl_df):
     assert not etl_df.empty
-    
+
 def test_columns_exists(etl_df):
     assert "Name" in etl_df.columns
     assert "Age" in etl_df.columns
