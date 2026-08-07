@@ -2,6 +2,7 @@ import pytest
 
 from etl import run_etl
 
+
 @pytest.fixture
 def etl_df():
     return run_etl()
