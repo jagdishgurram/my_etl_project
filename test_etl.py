@@ -1,4 +1,5 @@
 import pytest
+
 from etl import run_etl
 
 @pytest.fixture
