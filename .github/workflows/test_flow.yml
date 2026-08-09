@@ -29,23 +29,10 @@ jobs:
               python -m pip install --upgrade pip
               pip install -r requirements.txt 
 
-          - name: Check connection configuration
-            env:
-              CONNECTION_URL: ${{ secrets.CONNECTION_URL }}
+          - name: Check secret
             run: |
-              python - <<'PY'
-              import os
-
-              url = os.getenv("CONNECTION_URL")
-
-              if not url:
-                  print("CONNECTION_URL is missing")
-              else:
-                  print("CONNECTION_URL exists")
-                  print("Length:", len(url))
-                  print("Starts with:", url.split("://")[0])
-              PY
-
+              echo "Secret exists: ${CONNECTION_URL:+YES}"
+              
           - name: Run Tests
             run: |
               pip show pytest || pip install pytest
