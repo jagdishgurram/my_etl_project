@@ -12,8 +12,8 @@ engine = create_engine(connection)
 def run_etl():
     # Extract
     data = {
-        "Name": ["Alice", "Bob", "Charlie", "Jagdish", "Karlib"],
-        "Age": [25, 30, 35, 21, 22],
+        "Name": ["Alice", "Bob", "Charlie", "Jagdish", "Karlib", "Tarun"],
+        "Age": [25, 30, 35, 21, 22, 20],
     }
     df = pd.DataFrame(data)
 
