@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-connection = os.getenv("connection_url")
+connection = os.getenv("CONNECTION_URL")
 engine = create_engine(connection)
 
 def run_etl():
