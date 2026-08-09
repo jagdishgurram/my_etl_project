@@ -23,7 +23,7 @@ def run_etl():
     df.to_sql(
         "employees",
         engine,
-        if_exists="replace",
+        if_exists="append",
         index=False
     )
     

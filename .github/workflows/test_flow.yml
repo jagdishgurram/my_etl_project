@@ -56,6 +56,9 @@ jobs:
         runs-on: ubuntu-latest
         if: github.ref == 'refs/heads/main'  # Only deploy from main branch
 
+        env:
+          CONNECTION_URL: ${{ secrets.CONNECTION_URL }}
+
         steps:
           - name: Checkout Code
             uses: actions/checkout@v4
