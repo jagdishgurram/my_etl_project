@@ -6,7 +6,7 @@ on:
             - main       # Trigger workflow when pushing to main
     workflow_dispatch:   # Allow manual trigger
 #    schedule:
-#        - cron: "0 9 * * *"
+#        - cron: "0 8 * * *"
 
 jobs:
     build-and-test:
@@ -32,7 +32,7 @@ jobs:
           - name: Check secret
             run: |
               echo "Secret exists: ${CONNECTION_URL:+YES}"
-              
+
           - name: Run Tests
             run: |
               pip show pytest || pip install pytest
